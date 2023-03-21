@@ -2,6 +2,7 @@ package oop.iaccess1;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Duration;
 import java.util.*;
 public class Main {
     public static void main(String[] args) {
@@ -70,9 +71,8 @@ public class Main {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }
-            long time_difference = date2.getTime() - date1.getTime();
             // Calucalte time difference in days
-            long days_difference = (time_difference / (1000 * 60 * 60 * 24)) % 365;
+            long days_difference = Duration.between(date1.toInstant(), date2.toInstant()).toDays();
             double costPD = Double.parseDouble(arr[4]);
             double gst = (costPD * 15 / 100) * days_difference;
             System.out.println("The GST to be paid is Rs." + gst);
